@@ -1,7 +1,7 @@
 Não abordamos diretamente na capacitação, mas, como vocês viram na capacitação de Fundamentos, 
-um banco de dados relacional posssui tabelas que se comunicam entre si com ajuda de chaves 
-estrangeiras. Ao construir as migrations, podmeos representra isso. Segue como ficaria a 
-migrations de uma outra tabela que s eralaciona com a atebla usúario: 
+um banco de dados relacional possui tabelas que se comunicam entre si com ajuda de chaves 
+estrangeiras. Ao construir as migrations, podmeos representar isso. Segue como ficaria a 
+migrations de uma outra tabela que se ralaciona com a tabela 'usúario': 
  
 --------------------------------------------
 
