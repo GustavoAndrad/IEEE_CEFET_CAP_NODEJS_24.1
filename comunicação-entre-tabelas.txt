@@ -1,0 +1,28 @@
+Não abordamos diretamente na capacitação, mas, como vocês viram na capacitação de Fundamentos, 
+um banco de dados relacional posssui tabelas que se comunicam entre si com ajuda de chaves 
+estrangeiras. Ao construir as migrations, podmeos representra isso. Segue como ficaria a 
+migrations de uma outra tabela que s eralaciona com a atebla usúario: 
+ 
+--------------------------------------------
+
+exports.up = function(knex) {
+    return knex.schema.createTable('tarefa', (table) => {
+        table.increments('id').primary();
+        table.string('nome').notNullable();
+        table.string('descricao');
+        table.timestamp('prazo');
+        table.integer('usuarioId').unsigned().references("id").inTable('usuario').onDelete('CASCADE');
+    })
+};
+
+
+exports.down = function(knex) {
+    return knex.schema.dropTable('tarefa');
+};
+
+--------------------------------------------
+OBSERVAÇÕES: 
+
+cascade -> se eu remover um usuário, todas as suas tarefas também serão apagadas
+restrict -> só removo um usuário (tabela pai) se eu tiver removido todas as tarefas (filhas)
+set null -> a remoção do usuário colocar NULL em userId das tarefas
